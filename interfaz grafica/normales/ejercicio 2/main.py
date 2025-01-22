@@ -1,0 +1,41 @@
+import tkinter as tk
+from PIL import ImageTk, Image
+root=tk.Tk()
+font="minecraftia"
+color="cyan4"
+icono= Image.open(r"C:\Users\USER\Pictures\user (2).jpeg")
+imagen=ImageTk.PhotoImage(icono)
+root.iconphoto(True,imagen)
+root.title("Suma de dos numeros")
+label= tk.Label(root,bg=color, text="Suma de dos numeros",fg="gold", font=(font,20))
+label.pack(pady=2)
+texto=tk.Label(root,bg=color, text="Ingresa primer numero:",fg="gold",font=(font,12),justify="left")
+texto.pack(pady=10, padx=10, anchor="w")
+input1=tk.Entry(relief="solid",width=50,font=(font,10))
+input1.pack(anchor="w",padx=10)
+input1.insert(0, "Primer valor")
+def placeholder(event):
+    input1.configure(state=tk.NORMAL)  
+    input1.delete(0, tk.END) 
+    input1.unbind('<Button-1>', click) 
+click = input1.bind('<Button-1>', placeholder)
+texto2=tk.Label(root,bg=color, text="Ingresa primer numero:",fg="gold",font=(font,12),justify="left")
+texto2.pack(pady=10, padx=10, anchor="w")
+input2=tk.Entry(relief="solid",width=50,font=(font,10))
+input2.pack(anchor="w",padx=10)
+input2.insert(0, "Segundo valor")
+def placeholder2(event):
+    input2.configure(state=tk.NORMAL)  
+    input2.delete(0, tk.END) 
+    input2.unbind('<Button-1>', click2) 
+click2 = input2.bind('<Button-1>', placeholder2)
+def suma():
+    resul=int(input1.get())+ int(input2.get())
+    resultado.config(text=resul)
+boton=tk.Button(root,text="Sumar", font=(font,12),command=suma,width=20,relief="solid", borderwidth=3,bg="SeaGreen3")
+boton.pack(anchor="center",pady=20)
+resultado=tk.Label(root,bg=color, text="",fg="black",font=(font,100),justify="left")
+resultado.pack(anchor="center")
+root.config(bg=color)
+root.geometry("500x500")
+root.mainloop()
